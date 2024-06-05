@@ -1,4 +1,5 @@
 ﻿using Api.Models;
+using Api.Repositorios;
 using Api.Repositorios.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,11 +31,28 @@ namespace Api.Controllers
             }
 
             [HttpPost("CreateObservacoes")]
-            public async Task<ActionResult<ObservacoesModel>> InsertUser([FromBody] ObservacoesModel observacoesModel)
+            public async Task<ActionResult<ObservacoesModel>> InsertObservacoes([FromBody] ObservacoesModel observacoesModel)
             {
                 ObservacoesModel obs = await _observacoesRepositorio.InsertObservacoes(observacoesModel);
                 return Ok(obs);
             }
 
-        }
+            [HttpPut("UpdateObservacoes/{id:int}")]
+
+            public async Task<ActionResult<ObservacoesModel>> UpdateObservacoes(int id, [FromBody] ObservacoesModel observacoesModel)
+            {
+                observacoesModel.ObservacoesId = id;
+                ObservacoesModel obs = await _observacoesRepositorio.UpdateObservacoes(observacoesModel, id);
+                return Ok(obs);
+            }
+
+            [HttpDelete("DeleteObservacoes/{id:int}")]
+            public async Task<ActionResult<ObservacoesModel>> DeleteObservacoes(int id)
+            {
+                bool deleted = await _observacoesRepositorio.DeleteObservacoes(id);
+                return Ok(deleted);
+            }
+
     }
+
+}
