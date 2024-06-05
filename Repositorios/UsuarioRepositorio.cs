@@ -64,6 +64,10 @@ namespace Api.Repositorios
             await _dbContext.SaveChangesAsync();
             return true;
         }
+        public async Task<UsuarioModel> GetByEmail(string email)
+        {
+            return await _dbContext.Usuario.FirstOrDefaultAsync(x => x.UsuarioEmail == email);
+        }
 
     }
 }

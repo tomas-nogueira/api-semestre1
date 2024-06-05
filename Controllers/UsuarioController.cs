@@ -52,5 +52,24 @@ namespace Api.Controllers
             return Ok(deleted);
         }
 
+        [HttpPost("LoginUsuario/")]
+        public async Task<ActionResult<UsuarioModel>> LoginUsuario([FromBody] LoginModel usuario) // esse usuario é que o usuario digitou
+        {
+            UsuarioModel usuariomail = await _usuarioRepositorio.GetByEmail(usuario.UsuarioEmail); // esse usuário é o do banco
+
+            if (usuariomail == null) // Verifica se o usuário foi encontrado no banco
+            {
+                return BadRequest(false);
+            }
+
+            if (usuario.UsuarioEmail == usuariomail.UsuarioEmail && usuario.UsuarioSenha == usuariomail.UsuarioSenha) // comparacao
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(false);
+            }
+        }
     }
 }

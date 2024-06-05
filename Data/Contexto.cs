@@ -10,7 +10,7 @@ namespace Api.Data
 
         }
 
-        public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<UsuarioModel> Usuario { get; set; }    
         public DbSet<AnimalsModel> Animals { get; set; }
         public DbSet<ObservacoesModel> Observacoes { get; set; }
 

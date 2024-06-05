@@ -12,6 +12,8 @@
 
         public string UsuarioTelefone { get; set; } = string.Empty;
 
+
+
         public static implicit operator List<object>(UsuarioModel v)
         {
             throw new NotImplementedException();
