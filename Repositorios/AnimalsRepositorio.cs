@@ -19,6 +19,12 @@ namespace Api.Repositorios
         {
             return await _dbContext.Animals.ToListAsync();
         }
+        public async Task<List<AnimalsModel>> GetAllStatus1()
+        {
+            return await _dbContext.Animals
+            .Where(a => a.AnimalStatus == 1)
+            .ToListAsync();
+        }
 
         public async Task<AnimalsModel> GetById(int id)
         {

@@ -5,7 +5,7 @@ namespace Api.Repositorios.Interfaces
     public interface IAnimalsRepositorio
     {
         Task<List<AnimalsModel>> GetAll();
-
+        Task<List<AnimalsModel>> GetAllStatus1();
         Task<AnimalsModel> GetById(int id);
 
         Task<AnimalsModel> InsertAnimal(AnimalsModel animal);

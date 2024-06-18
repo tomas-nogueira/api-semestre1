@@ -51,6 +51,12 @@ namespace Api.Controllers
             bool deleted = await _animalsRepositorio.DeleteAnimal(id);
             return Ok(deleted);
         }
+        [HttpGet("GetAllStatus1")]
+        public async Task<ActionResult<List<AnimalsModel>>> GetAllStatus1()
+        {
+            List<AnimalsModel> animals = await _animalsRepositorio.GetAllStatus1();
+            return Ok(animals);
+        }
 
     }
 }

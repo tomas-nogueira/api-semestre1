@@ -64,7 +64,7 @@ namespace Api.Controllers
 
             if (usuario.UsuarioEmail == usuariomail.UsuarioEmail && usuario.UsuarioSenha == usuariomail.UsuarioSenha) // comparacao
             {
-                return Ok();
+                return Ok(usuariomail);
             }
             else
             {
